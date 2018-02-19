@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+
+"""
+Prototype Reports
+~~~~~~~~~~~~~~~~~
+
+:copyright: (c) 2017-2018 by San Jacinto College
+:license: unspecificed
+
+
+"""
+
 from jinja2 import Environment, FileSystemLoader
 from db import db_connect,Course
 
