@@ -1,3 +1,7 @@
+GENERATED_FILES = finished/html_report.html finished/report.pdf
+
+all: clean $(GENERATED_FILES)
+
 finished/report.pdf: finished/html_report.html
 	xhtml2pdf $< $@ 
 

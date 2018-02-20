@@ -11,20 +11,28 @@
 
         <table>
             <tr>
-                <th>Courses</th>
                 <th>
-                    <h3>{{programs[0].name}}</h3>
+                    <h2>{{programs[0].name}}</h2>
                 </th>
             </tr>
-            {% for course in programs[0].courses %}
+            {% for component in programs[0].components %}
+                {% for requirement in component.requirements %}
             <tr>
                 <td>
-                {{ course.rubric }} {{ course.number }}
-                </td>
-                <td>
-                {{ course.name }}
+                    <div>
+                        <h4> {{requirement.name}} </h4>
+                            <ul>
+                                {% for course in requirement.courses %}
+                                <li>
+                                    {{course.rubric}} {{course.number}} - {{course.name}}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
                 </td>
             </tr>
+                {% endfor %}
+
             {% endfor %}
 
         </table>
