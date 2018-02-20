@@ -66,7 +66,7 @@
                         <h4><strong> {{requirement.name}} </strong></h4>
                             <ul>
                                 {% for course in requirement.courses %}
-                                <li id="UHCL_{{course.id}}">
+                                <li id="UHCL_{{course.id}}" style="{{(course|sanjacify)['style']}}">
                                     {{(course|sanjacify).rubric}} {{(course|sanjacify).number}} - {{(course|sanjacify).name|trim}}
                                 </li>
                                 {% endfor %}

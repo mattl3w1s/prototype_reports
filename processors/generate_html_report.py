@@ -20,8 +20,10 @@ session = db_connect()
 def sanjacify(course):
     SJC_course = session.query(SJC).filter(SJC.UHCL_id == course.id).first()
     if(SJC_course):
+        setattr(SJC_course,"style","color:blue;font-weight:bold;") 
         return SJC_course
     else:
+        setattr(course,"style","")
         return course
 
 def trim(string_):
