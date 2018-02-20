@@ -13,11 +13,10 @@ import sys
 from jinja2 import Environment, FileSystemLoader
 from db import db_connect,Course,Program,SJC
 
-
-
 template_file = sys.stdin.read()
 
 session = db_connect()
+
 def sanjacify(course):
     SJC_course = session.query(SJC).filter(SJC.UHCL_id == course.id).first()
     if(SJC_course):

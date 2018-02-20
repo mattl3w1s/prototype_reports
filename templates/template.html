@@ -10,18 +10,43 @@
         <![endif]-->
     </head>    
     <body>
-            <a href="http://www.google.com"><h2>UHCL, Accounting B.S.</h2></a>
+
+        <a name="toc"></a>
+        <h3>SJC Course Applicability to UHCL Degree Requirements</h3>
+        <h3>Table of Contents</h3>
+        <table>
+        <tr>
+        {% for half in programs|batch(34) %}
+        <td>
+        <ul>
+            {% for program in half %}
+            <li>
+                <a href="#{{program.id}}">{{program.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        </td>
+        {% endfor %}
+        </tr>
+        </table>
+        
+
+        {% for program in programs %}
+        <div class="pagebreak"></div>
+        <a name="{{program.id}}"></a>
+        <h3 style="margin-bottom:0em;">{{program.name}}</h3>
+        <h5>(<a href="{{program.link}}">View source @ UHCL.edu</a>  |  <a href="#toc">Back to table of contents</a>)</h5>
 
         <table>
             <tr>
                 <th>
-                    <h2>UHCL Courses</h2>
+                    <h3>UHCL Courses</h3>
                 </th>
                 <th>
-                        <h2>San Jac Applicability</h2>
+                        <h3>San Jac Applicability</h3>
                 </th>
             </tr>
-            {% for component in programs[0].components %}
+            {% for component in program.components %}
                 {% for requirement in component.requirements %}
             <tr>
                 <td>
@@ -54,5 +79,6 @@
             {% endfor %}
 
         </table>
+        {% endfor %}
 
 </html>
