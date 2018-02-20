@@ -11,8 +11,9 @@
     </head>    
     <body>
 
+        <div class="container">
         <a name="toc"></a>
-        <h3>SJC Course Applicability to UHCL Degree Requirements</h3>
+        <h1>SJC Course Applicability to UHCL Degree Requirements</h1>
         <h3>Table of Contents</h3>
 
         <table>
@@ -39,6 +40,7 @@
         {% for program in programs %}
         <div class="pagebreak"></div>
         <a name="{{program.id}}"></a>
+        <br>
         <h3 style="margin-bottom:0em;">{{program.name}}</h3>
         <h5>(<a href="#toc">Back to table of contents</a> | <a href="{{program.link}}">View source @ UHCL.edu</a>)</h5>
 
@@ -86,5 +88,6 @@
 
         </table>
         {% endfor %}
-
+    </div>
+    </body>
 </html>
