@@ -14,20 +14,25 @@
         <a name="toc"></a>
         <h3>SJC Course Applicability to UHCL Degree Requirements</h3>
         <h3>Table of Contents</h3>
+
         <table>
-        <tr>
-        {% for half in programs|batch(34) %}
-        <td>
-        <ul>
-            {% for program in half %}
-            <li>
-                <a href="#{{program.id}}">{{program.name}}</a>
-            </li>
-            {% endfor %}
-        </ul>
-        </td>
+            {% for half in programs|batch(34) %}
+            <tr>
+                {% for quarter in half|batch(17) %}
+                <td>
+                    <ul>
+                        {% for program in quarter %}
+                        <li>
+                            <a href="#{{program.id}}">{{program.name}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                {% endfor %}
+            </tr>
+        <div class="pagebreak"></div>
         {% endfor %}
-        </tr>
+        
         </table>
         
 
@@ -35,7 +40,7 @@
         <div class="pagebreak"></div>
         <a name="{{program.id}}"></a>
         <h3 style="margin-bottom:0em;">{{program.name}}</h3>
-        <h5>(<a href="{{program.link}}">View source @ UHCL.edu</a>  |  <a href="#toc">Back to table of contents</a>)</h5>
+        <h5>(<a href="#toc">Back to table of contents</a> | <a href="{{program.link}}">View source @ UHCL.edu</a>)</h5>
 
         <table>
             <tr>
