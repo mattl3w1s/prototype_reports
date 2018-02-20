@@ -40,10 +40,10 @@
         <table>
             <tr>
                 <th>
-                    <h3>UHCL Courses</h3>
+                    <h4>UHCL Courses</h4>
                 </th>
                 <th>
-                        <h3>San Jac Applicability</h3>
+                        <h4>San Jac Applicability</h4>
                 </th>
             </tr>
             {% for component in program.components %}
@@ -66,8 +66,9 @@
                         <h4><strong> {{requirement.name}} </strong></h4>
                             <ul>
                                 {% for course in requirement.courses %}
-                                <li id="UHCL_{{course.id}}" style="{{(course|sanjacify)['style']}}">
-                                    {{(course|sanjacify).rubric}} {{(course|sanjacify).number}} - {{(course|sanjacify).name|trim}}
+                                {% set course = course|sanjacify %}
+                                <li id="UHCL_{{course.id}}" style="{{course['style']}}">
+                                    {{course.rubric}} {{course.number}} - {{course.name|trim}}
                                 </li>
                                 {% endfor %}
                             </ul>
