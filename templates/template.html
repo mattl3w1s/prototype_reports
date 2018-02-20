@@ -2,17 +2,22 @@
 <html>
     <head lang"en">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../templates/static/style.css">
+        <link rel="stylesheet" href="../templates/static/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="../templates/static/blueprint/screen.css" type="text/css" media="print">
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+        <![endif]-->
     </head>    
     <body>
-            <p class="title">
-            <a href="http://www.google.com">UHCL, Accounting B.S.</a>
-            </p>
+            <a href="http://www.google.com"><h2>UHCL, Accounting B.S.</h2></a>
 
         <table>
             <tr>
                 <th>
-                    <h2>{{programs[0].name}}</h2>
+                    <h2>UHCL Courses</h2>
+                </th>
+                <th>
+                        <h2>San Jac Applicability</h2>
                 </th>
             </tr>
             {% for component in programs[0].components %}
@@ -20,10 +25,22 @@
             <tr>
                 <td>
                     <div>
-                        <h4> {{requirement.name}} </h4>
+                        <h4><strong> {{requirement.name}} </strong></h4>
                             <ul>
                                 {% for course in requirement.courses %}
-                                <li>
+                                <li id="UHCL_{{course.id}}">
+                                    {{course.rubric}} {{course.number}} - {{course.name}}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h4><strong> {{requirement.name}} </strong></h4>
+                            <ul>
+                                {% for course in requirement.courses %}
+                                <li id="UHCL_{{course.id}}">
                                     {{course.rubric}} {{course.number}} - {{course.name}}
                                 </li>
                                 {% endfor %}
