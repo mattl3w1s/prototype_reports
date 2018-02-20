@@ -9,7 +9,6 @@ Prototype Reports
 
 
 """
-
 import sys
 from jinja2 import Environment, FileSystemLoader
 from db import db_connect,Course,Program
