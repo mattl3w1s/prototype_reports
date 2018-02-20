@@ -42,7 +42,7 @@
                             <ul>
                                 {% for course in requirement.courses %}
                                 <li id="UHCL_{{course.id}}">
-                                    {{course.rubric}} {{course.number}} - {{course.name}}
+                                    {{(course|sanjacify).rubric}} {{(course|sanjacify).number}} - {{(course|sanjacify).name}}
                                 </li>
                                 {% endfor %}
                             </ul>

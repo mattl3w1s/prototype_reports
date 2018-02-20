@@ -1,1 +1,1 @@
-from .models import Course, Program, db_connect
+from .models import Course, Program, db_connect,SJC
