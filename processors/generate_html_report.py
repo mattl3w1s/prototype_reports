@@ -10,17 +10,22 @@ Prototype Reports
 
 """
 
+import sys
 from jinja2 import Environment, FileSystemLoader
-from db import db_connect,Course
+from db import db_connect,Course,Program
+
+template_file = sys.stdin.read()
 
 session = db_connect()
 env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template("templates/template.html")
+template = env.from_string(template_file)
+
+programs = session.query(Program).order_by(Program.name)
 
 template_vars = {
-    "title":"This Title is Test!"
+    "title":"This Title is Test!",
+    "programs":programs
 }
 
 html_out = template.render(template_vars)
-with open('finished/file.html','w') as f:
-    f.write(html_out) 
+sys.stdout.write(html_out)
