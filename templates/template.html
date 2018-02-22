@@ -111,29 +111,27 @@
         <div class="container">
         <a name="toc"></a>
         <div style="margin-top:8px;">
-        <h1>Pathway Course Comparison</h1>
+        <h1 style="margin-bottom:3px;">Pathway Course Comparison Report</h1>
+        <h2 style="margin-top:0px;margin-left:5px;color:gray;">University of Houston Clear Lake</h4>
         </div>
         <div class="prominent">
         <h2>Table of Contents</h2>
         </div>
 
         <table>
-            {% for half in programs|batch(34) %}
             <tr>
-                {% for quarter in half|batch(17) %}
+            {% for half in programs|batch(38) %}
                 <td>
                     <ul>
-                        {% for program in quarter %}
+                        {% for program in half %}
                         <li>
                             <a href="#{{program.id}}">{{program.name}}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </td>
-                {% endfor %}
-            </tr>
-        <div class="pagebreak"></div>
         {% endfor %}
+        </tr>
         
         </table>
 
