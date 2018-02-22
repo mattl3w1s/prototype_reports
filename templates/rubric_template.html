@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head lang"en">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../templates/static/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="../templates/static/blueprint/screen.css" type="text/css" media="print">
+        <link rel="stylesheet" href="../templates/static/style.css" type="text/css">
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+        <![endif]-->
+    </head>    
+    <body>
+
+        <div class="container">
+        <a name="toc"></a>
+        <h1>SJC Course Applicability to UHCL Degree Requirements</h1>
+        <h3>Table of Contents</h3>
+
+        <table>
+            {% for half in programs|batch(34) %}
+            <tr>
+                {% for quarter in half|batch(17) %}
+                <td>
+                    <ul>
+                        {% for program in quarter %}
+                        <li>
+                            <a href="#{{program.id}}">{{program.name}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                {% endfor %}
+            </tr>
+        <div class="pagebreak"></div>
+        {% endfor %}
+        
+        </table>
+
+        {% for program in programs %}
+        <div class="pagebreak"></div>
+        <a name="{{program.id}}"></a>
+        <br>
+        <h3 style="margin-bottom:0em;">{{program.name}}</h3>
+        <h5>(<a href="#toc">Back to table of contents</a> | <a href="{{program.link}}">View source @ UHCL.edu</a>)</h5>
+
+        <table>
+            <tr>
+                <th>
+                    <h4>UHCL Courses</h4>
+                </th>
+                <th>
+                        <h4>San Jac Applicability</h4>
+                </th>
+            </tr>
+            {% for component in program.components %}
+                {% for requirement in component.requirements %}
+            <tr>
+                <td>
+                    <div>
+                        <h4><strong> {{requirement.name}} </strong></h4>
+                            <ul>
+                                {% for course in requirement.courses %}
+                                <li id="UHCL_{{course.id}}">
+                                    {{course.rubric}} {{course.number}} - {{course.name}}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h4><strong> {{requirement.name}} </strong></h4>
+                            <ul>
+                                {% for course in requirement.courses %}
+                                {% set course = course|sanjacify %}
+                                <li id="UHCL_{{course.id}}" style="{{course['style']}}">
+                                    {{course.rubric}} {{course.number}} - {{course.name|trim}}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </td>
+            </tr>
+                {% endfor %}
+
+            {% endfor %}
+
+        </table>
+        {% endfor %}
+    </div>
+    </body>
+</html>

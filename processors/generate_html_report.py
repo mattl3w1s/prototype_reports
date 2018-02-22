@@ -29,7 +29,6 @@ def sanjacify(course):
 def trim(string_):
     return string_.replace(' (lecture)','')
 
-
 env = Environment(loader=FileSystemLoader('.'))
 env.filters["sanjacify"] = sanjacify
 env.filters["trim"] = trim
